@@ -1,0 +1,35 @@
+.notfound-con{
+    width: 100%;
+    height: 100vh;
+    background-color: #121212;
+    text-align: center;
+    font-family: 'Trispace';
+
+    header {
+        padding: 0px 30px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 64px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    section{
+        box-sizing: border-box;
+        padding: 0px 30px;
+    }
+
+    .error-img{
+        padding-top: 200px;
+        padding-bottom: 100px;
+        max-width: 90%;
+    }
+
+    p {
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: #9696a5;
+        line-height: 2rem;
+    }
+}
