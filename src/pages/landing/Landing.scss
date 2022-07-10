@@ -1,0 +1,98 @@
+.landing-con{
+    header{
+        position: fixed;
+        top: 0;
+        margin: 0;
+        padding: 0 30px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 2;
+        width: calc(100% - 45px);
+        transition: top .5s ease;
+    
+        #signup-btn{
+            margin-top: 0;
+        }
+    }
+    
+    .darken{
+        background-color: #121212;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    }
+    
+    button{
+        background-color: #3de8e7;
+        border: 1px solid #3de8e7;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-family: 'Trispace';
+        font-size: 1rem;
+        font-weight: 600;
+        color: #121212;
+        cursor: pointer;
+        transition: all .3s ease;
+        margin-top: 30px;
+        &:hover{
+            background-color: #121212;
+            color: #fff;
+        }
+    }
+    
+    main{
+        position: relative;
+    }
+    
+    .hero-con{
+        padding-top: 281px;
+        padding-bottom: 400px;
+        background-image: url(https://user-images.githubusercontent.com/63467479/178109525-449e5954-0a1b-486e-acb3-ec7a4992e932.svg),url(https://user-images.githubusercontent.com/63467479/178109526-97bab835-3480-4adb-bedf-21fa4a59bf72.png);
+        background-size: 100%;
+        background-position: 100% 100%;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .row{
+            padding: 0px 30px;
+            max-width: 1200px;
+            width: 100%;
+            text-align: left;
+    
+            h1{
+                font-size: 3rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 30px;
+                font-family: 'Audiowide';
+                letter-spacing: 2px;
+            }
+    
+            p{
+                font-size: 1rem;
+                color: #fff;
+                font-family: 'Trispace';
+            }
+    
+            .desc{
+                width: 45%;
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 1300px){
+        .hero-con{
+            padding-bottom: 230px;
+        }
+    }
+    
+    @media only screen and (max-width: 1000px){
+        .hero-con{
+            padding-bottom: 130px;
+            padding-top: 80px;
+        }
+    }
+}
