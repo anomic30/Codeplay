@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { useLocation, Routes, Route } from "react-router-dom";
 import Notfound from './pages/404/Notfound';
 import Dashboard from './pages/dashboard/Dashboard';
 import Landing from './pages/landing/Landing';
 import Signup from './pages/signup/Signup';
-import { AnimatePresence } from 'framer-motion'
+import Playground from './pages/playground/Playground';
+import { AnimatePresence } from 'framer-motion';
 
 const AnimatedRoutes = () => {
     const location = useLocation();
@@ -16,6 +17,7 @@ const AnimatedRoutes = () => {
                 <Route path="/" element={<Landing />} />
                 <Route path="/auth" element={<Signup />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/playground" element={<Playground/>} />
             </Routes>
         </AnimatePresence>
     )

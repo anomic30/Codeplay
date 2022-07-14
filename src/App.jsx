@@ -1,9 +1,5 @@
 import './App.scss'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Landing from './pages/landing/Landing'
-import Signup from './pages/signup/Signup';
-import Dashboard from './pages/dashboard/Dashboard';
-import Notfound from './pages/404/Notfound';
+import { BrowserRouter as Router} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { magic } from './utils/magic';
 import { UserContext } from './contexts/UserContext';

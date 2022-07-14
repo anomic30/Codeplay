@@ -1,0 +1,81 @@
+.playground-con {
+    font-family: 'Trispace';
+    width: 100vw;
+    height: 100vh;
+    background-color: #161616;
+
+    .sub {
+        display: flex;
+    }
+
+    .side-panel {
+        box-sizing: border-box;
+        padding: 0px 10px;
+        background-color: #1F2024;
+        max-width: 400px;
+        width: 100%;
+        position: relative;
+
+        p {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .custom-input-box,
+        .output-box {
+            background-color: #1A1A1E;
+            max-height: 180px;
+            height: 100%;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        .output-box {
+            max-height: 250px;
+        }
+
+        button {
+            position: absolute;
+            bottom: 10px;
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 600;
+            background: var(--primary-color);
+            color: #1A1A1E;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border: none;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        button span {
+            display: block;
+            margin-left: 0.3em;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button img {
+            transform-origin: center center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        button:hover img {
+            transform: translateX(1.2em) scale(1.1);
+        }
+
+        button:hover span {
+            transform: translateX(5em);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    }
+}
