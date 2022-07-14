@@ -7,6 +7,7 @@ import Notfound from './pages/404/Notfound';
 import { useEffect, useState } from 'react';
 import { magic } from './utils/magic';
 import { UserContext } from './contexts/UserContext';
+import AnimatedRoutes from './AnimatedRoutes';
 
 const App = () => {
   const [user, setUser] = useState();
@@ -24,12 +25,7 @@ const App = () => {
     <div className="App">
       <UserContext.Provider value={[user, setUser]}>
         <Router>
-          <Routes>
-            <Route path="*" element={<Notfound />} />
-            <Route path="/" element={<Landing />} />
-            <Route path="/auth" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
+          <AnimatedRoutes/>
         </Router>
       </UserContext.Provider>
     </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Landing.scss'
 import brand from '../../assets/icons/brand.png'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Landing = () => {
     const navigate = useNavigate()
@@ -16,10 +17,22 @@ const Landing = () => {
         }
     }
 
+    const animationConfiguration = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+    };
+
     window.addEventListener('scroll', handleScroll);
 
     return (
-        <div className='landing-con'>
+        <motion.div className='landing-con'
+            variants={animationConfiguration}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.5 }}>
+            
             <header className={scrolled? "darken": null}>
                 <img src={brand} alt="Code play" />
                 <button id='signup-btn' onClick={()=>navigate("/auth")}>
@@ -44,7 +57,7 @@ const Landing = () => {
                     </div>
                 </section>
             </main>
-        </div>
+        </motion.div>
     )
 }
 
