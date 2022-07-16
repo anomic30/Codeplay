@@ -51,16 +51,15 @@ const monacoThemes = {
   monoindustrial: "monoindustrial",
 };
 
-const generateTheme = (theme) => {
+export const generateTheme = (theme) => {
+  console.log(theme)
   return new Promise((res) => {
     Promise.all([
       loader.init(),
-      import(`monaco-themes/themes/${monacoThemes[theme]}.json`),
+      import(`../../node_modules/monaco-themes/themes/${monacoThemes[theme]}.json`),
     ]).then(([monaco, themeData]) => {
       monaco.editor.defineTheme(theme, themeData);
       res();
     });
   });
 };
-
-export { generateTheme };

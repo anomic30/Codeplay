@@ -50,7 +50,7 @@ const Landing = () => {
                                 Sync your code across multiple devices and share it with your friends.
                             </p>
 
-                            <button>
+                            <button onClick={()=>navigate("/playground")}>
                                 Start Coding Now
                             </button>
                         </div>

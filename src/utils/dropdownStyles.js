@@ -2,6 +2,10 @@ export const customStyles = {
     control: (styles) => ({
         ...styles,
         width: "14rem",
+        boxShadow: 'none',
+        '&:hover': {
+            border: '2px solid #00DBA7',
+        },
         borderRadius: "5px",
         color: "#00DBA7",
         fontSize: "0.8rem",
@@ -26,7 +30,7 @@ export const customStyles = {
             },
         };
     },
-    
+
     menu: (styles) => {
         return {
             ...styles,
@@ -36,7 +40,25 @@ export const customStyles = {
             borderRadius: "5px",
         };
     },
-    
+
+    menuList: (styles) => ({
+        ...styles,
+
+        "::-webkit-scrollbar": {
+            width: "4px",
+            height: "0px",
+        },
+        "::-webkit-scrollbar-track": {
+            background: "#1f2024"
+        },
+        "::-webkit-scrollbar-thumb": {
+            background: "#00DBA7"
+        },
+        "::-webkit-scrollbar-thumb:hover": {
+            background: "#00DBA7"
+        }
+    }),
+
     singleValue: (styles) => {
         return {
             ...styles,
