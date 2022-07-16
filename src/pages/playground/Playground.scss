@@ -32,6 +32,14 @@
             border-radius: 5px;
             box-sizing: border-box;
             padding: 5px;
+            color: #828282;
+            font-size: 16px;
+            resize: none;
+            -ms-overflow-style: none;
+        }
+        
+        .custom-input-box::-webkit-scrollbar {
+            display: none;
         }
 
         .output-box {
@@ -67,7 +75,7 @@
         }
 
         button:hover img {
-            transform: translateX(1.2em) scale(1.1);
+            transform: translateX(1.2em);
         }
 
         button:hover span {
