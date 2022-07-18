@@ -8,7 +8,7 @@ export const customStyles = {
         },
         borderRadius: "5px",
         color: "#00DBA7",
-        fontSize: "0.8rem",
+        fontSize: "1rem",
         lineHeight: "1.75rem",
         backgroundColor: "#1A1A1E",
         cursor: "pointer",

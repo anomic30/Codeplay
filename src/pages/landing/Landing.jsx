@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Landing.scss'
-import brand from '../../assets/icons/brand.png'
+import brand from '../../assets/icons/brand.svg'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -55,6 +55,10 @@ const Landing = () => {
                             </button>
                         </div>
                     </div>
+                </section>
+
+                <section className='app-desc'>
+                    
                 </section>
             </main>
         </motion.div>

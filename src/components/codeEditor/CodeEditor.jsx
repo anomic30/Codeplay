@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './CodeEditor.scss'
 import Editor from "@monaco-editor/react";
 
-const CodeEditor = ({language, theme, code, setCode}) => {
+const CodeEditor = ({language, theme, code, setCode, fontSize}) => {
     const [value, setvalue] = useState(code || "");
 
     const handleEditorChange = (value) => {
@@ -10,9 +10,14 @@ const CodeEditor = ({language, theme, code, setCode}) => {
         setCode(value);
     }
 
+    const options = {
+        fontSize: fontSize,
+    }
+
     return (
         <div className='codeeditor-con'>
             <Editor
+                options={options}
                 height="calc(100vh - 50px)"
                 width={'100%'}
                 language={language || 'javascript'}

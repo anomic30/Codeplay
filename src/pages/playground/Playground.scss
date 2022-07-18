@@ -44,6 +44,7 @@
 
         .output-box {
             max-height: 250px;
+            white-space:pre-line;
         }
 
         .stats-box{
@@ -51,6 +52,12 @@
                 color: #828282;
                 font-size: 16px;
             }
+        }
+
+        .processing{
+            background-color: #1A1A1E;
+            border: 1px solid var(--primary-color);
+            padding: 10px 35px;
         }
 
         button {
@@ -70,26 +77,26 @@
             transition: all 0.2s;
         }
 
-        button span {
+        .run span {
             display: block;
             margin-left: 0.3em;
             transition: all 0.2s ease-in-out;
         }
 
-        button img {
+        .run img {
             transform-origin: center center;
             transition: transform 0.2s ease-in-out;
         }
 
-        button:hover img {
+        .run:hover img {
             transform: translateX(1.2em);
         }
 
-        button:hover span {
+        .run:hover span {
             transform: translateX(5em);
         }
 
-        button:active {
+        .run:active {
             transform: scale(0.95);
         }
     }

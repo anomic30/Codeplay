@@ -38,7 +38,7 @@
                 font-weight: 600;
                 margin-top: 20px;
                 margin-bottom: 20px;
-                background: linear-gradient(90.04deg, #3DE8E7 -2.87%, #00DBA7 100%);
+                background: linear-gradient(90.04deg, #3DE8E7 -0.87%, #00DBA7 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
@@ -55,13 +55,13 @@
                 border: 2px solid #9696a5;
                 background-color: transparent;
                 padding: 0px 5px;
-                color: #3de8e7;
+                color: var(--primary-color);
                 font-family: 'Trispace';
             }
 
             input:focus {
                 outline: none;
-                border: 2px solid #3de8e7;
+                border: 2px solid var(--primary-color);
             }
 
             .desc {
@@ -79,8 +79,8 @@
             }
 
             button {
-                background-color: #3de8e7;
-                border: 1px solid #3de8e7;
+                background-color: var(--primary-color);
+                border: 1px solid var(--primary-color);
                 border-radius: 5px;
                 padding: 10px 20px;
                 font-size: 1rem;

@@ -6,11 +6,13 @@ import play_icon from '../../assets/icons/play.svg'
 import { languageOptions } from '../../utils/languages';
 import { generateTheme } from '../../utils/generateTheme'
 import Axios from 'axios';
+import spinner from '../../assets/icons/spinner.svg'
 
 const Playground = () => {
     const [code, setCode] = useState("");
     const [language, setLanguage] = useState(languageOptions[0]);
     const [theme, setTheme] = useState("vs-dark");
+    const [fontSize, setFontSize] = useState(14);
     const [customInput, setCustomInput] = useState("");
     const [outputDetails, setOutputDetails] = useState(null);
     const [processing, setProcessing] = useState(null);
@@ -30,6 +32,7 @@ const Playground = () => {
     }
 
     const handleCompile = () => {
+        console.log("handleCompile");
         setProcessing(true);
         const formData = {
             language_id: language.id,
@@ -102,9 +105,18 @@ const Playground = () => {
 
     return (
         <div className='playground-con'>
-            <Navbar handleLanguageChange={handleLanguageChange} handleThemeChange={handleThemeChange} theme={theme} />
+            <Navbar handleLanguageChange={handleLanguageChange}
+                handleThemeChange={handleThemeChange}
+                setFontSize={setFontSize}
+                theme={theme}
+            />
             <div className='sub'>
-                <CodeEditor language={language?.value} theme={theme.value || theme} code={code} setCode={setCode} />
+                <CodeEditor language={language?.value}
+                    theme={theme.value || theme}
+                    code={code}
+                    setCode={setCode}
+                    fontSize={fontSize}
+                />
                 <div className="side-panel">
                     <textarea className="custom-input-box"
                         placeholder='Custom input'
@@ -122,9 +134,10 @@ const Playground = () => {
                         <p>Memory: <span>{outputDetails?.memory || null}</span></p>
                     </div>
 
-                    <button>
-                        <img src={play_icon} alt="" />
-                        <span onClick={handleCompile}>Run</span>
+                    <button onClick={handleCompile} disabled={processing} className={processing ? "processing" : "run"}>
+                        {processing ? <img src={spinner} alt="Processing..." /> :
+                            <><img src={play_icon} alt="" />
+                                <span>Run</span></>}
                     </button>
                 </div>
             </div>

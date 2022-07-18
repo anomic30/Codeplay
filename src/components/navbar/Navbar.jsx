@@ -4,8 +4,9 @@ import brand from '../../assets/icons/brand.svg'
 import LanguageDropdown from '../languageDropdown/LanguageDropdown'
 import ThemeDropdown from '../themeDropdown/ThemeDropdown'
 import { useNavigate } from 'react-router-dom'
+import FontSizeSelector from '../fontsizeSelector/FontSizeSelector'
 
-const Navbar = ({ handleLanguageChange, handleThemeChange, theme }) => {
+const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, theme }) => {
     const navigate = useNavigate()
     return (
         <header className='app-nav'>
@@ -14,6 +15,7 @@ const Navbar = ({ handleLanguageChange, handleThemeChange, theme }) => {
                 <div className="nav-controls">
                     <LanguageDropdown handleLanguageChange={handleLanguageChange} />
                     <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
+                    <FontSizeSelector setFontSize={setFontSize}/>
                 </div>
             </div>
             <div className="acc">

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Signup.scss'
-import brand from '../../assets/icons/brand.png'
+import brand from '../../assets/icons/brand.svg'
 import rocket_men from '../../assets/images/rocket-men.png'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../contexts/UserContext'
@@ -74,7 +74,7 @@ const Signup = () => {
                     <button onClick={handleAuth}>
                         {showLogin ? "Login" : "Sign Up"}
                     </button>
-                    <p className='mini-text'>Already have an account? <span style={{ color: "#3de8e7", cursor: "pointer" }} onClick={() => setShowLogin(!showLogin)}>{showLogin ? "Sign up" : "Login"}</span></p>
+                    <p className='mini-text'>Already have an account? <span style={{ color: "#00DBA7", cursor: "pointer" }} onClick={() => setShowLogin(!showLogin)}>{showLogin ? "Sign up" : "Login"}</span></p>
                 </div>
             </section>
 
