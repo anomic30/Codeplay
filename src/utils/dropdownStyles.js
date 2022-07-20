@@ -4,10 +4,10 @@ export const customStyles = {
         width: "14rem",
         boxShadow: 'none',
         '&:hover': {
-            border: '2px solid #00DBA7',
+            border: '2px solid #3de8e7',
         },
         borderRadius: "5px",
-        color: "#00DBA7",
+        color: "#3de8e7",
         fontSize: "1rem",
         lineHeight: "1.75rem",
         backgroundColor: "#1A1A1E",
@@ -18,14 +18,14 @@ export const customStyles = {
     option: (styles) => {
         return {
             ...styles,
-            color: "#00DBA7",
+            color: "#3de8e7",
             fontSize: "0.8rem",
             lineHeight: "1.75rem",
             width: "100%",
             background: "#1A1A1E",
             ":hover": {
-                backgroundColor: "rgba(0, 219, 167, 0.76)",
-                color: "#FFF",
+                backgroundColor: "#3de8e7",
+                color: "#000",
                 cursor: "pointer",
             },
         };
@@ -52,17 +52,17 @@ export const customStyles = {
             background: "#1f2024"
         },
         "::-webkit-scrollbar-thumb": {
-            background: "#00DBA7"
+            background: "#3de8e7"
         },
         "::-webkit-scrollbar-thumb:hover": {
-            background: "#00DBA7"
+            background: "#3de8e7"
         }
     }),
 
     singleValue: (styles) => {
         return {
             ...styles,
-            color: "#00DBA7",
+            color: "#3de8e7",
             fontSize: "1rem",
             lineHeight: "1.75rem",
         };
@@ -71,7 +71,7 @@ export const customStyles = {
     dropdownIndicator: (styles) => {
         return {
             ...styles,
-            color: "#00DBA7",
+            color: "#3de8e7",
             cursor: "pointer",
         };
     }

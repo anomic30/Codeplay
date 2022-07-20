@@ -28,7 +28,7 @@
         border: 1px solid var(--primary-color);
         border-radius: 5px;
         padding: 10px 20px;
-        font-family: 'Trispace';
+        font-family: 'Manrope';
         font-size: 1rem;
         font-weight: 600;
         color: #121212;
@@ -74,11 +74,15 @@
             p{
                 font-size: 1rem;
                 color: #fff;
-                font-family: 'Trispace';
+                font-family: 'Manrope';
             }
     
             .desc{
                 width: 45%;
+
+                p{
+                    color: #a9acbb;
+                }
             }
         }
     }
