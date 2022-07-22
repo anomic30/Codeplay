@@ -47,6 +47,7 @@ const Playground = () => {
             headers: {
                 "content-type": "application/json",
                 "Content-Type": "application/json",
+                "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
                 "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
                 "X-RapidAPI-Key": import.meta.env.VITE_APP_RAPID_API_KEY,
             },
