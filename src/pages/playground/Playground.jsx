@@ -79,7 +79,7 @@ const Playground = () => {
             url: import.meta.env.VITE_APP_RAPID_API_URL + "/" + token,
             params: { base64_encoded: "true", fields: "*" },
             headers: {
-                "X-RapidAPI-Host": import.meta.env.VITE_APP_RAPID_API_HOST,
+                'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
                 "X-RapidAPI-Key": import.meta.env.VITE_APP_RAPID_API_KEY,
             },
         };
