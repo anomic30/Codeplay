@@ -46,3 +46,5 @@ npm run dev
 # To build the application
 npm run build
 ```
+
+<img src="https://user-images.githubusercontent.com/63467479/180445107-3f5a285f-0541-4cad-93f6-1068ee09d1a9.svg"/>
