@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Playground.scss'
 import Navbar from '../../components/navbar/Navbar'
-import CodeEditor from '../../components/codeEditor/codeEditor'
+import CodeEditor from '../../components/codeEditor/CodeEditor'
 import play_icon from '../../assets/icons/play.svg'
 import { languageOptions } from '../../utils/languages';
 import { generateTheme } from '../../utils/generateTheme'
