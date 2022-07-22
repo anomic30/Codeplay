@@ -86,7 +86,7 @@ const Landing = () => {
                                 <p>Type your code effortlessly and compile it on the go.
                                     Codeplay supports over 40+ programming languages.
                                 </p>
-                                <button>Lets Code!</button>
+                                <button onClick={()=>navigate("/playground")}>Lets Code!</button>
                             </div>
                             <div className="col2">
                                 <ul>
