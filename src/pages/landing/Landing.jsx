@@ -55,7 +55,6 @@ const Landing = () => {
                             <h1>Code Compilation <br />Made easy.</h1>
                             <p>
                                 No need to install compilers anymore! Codeplay allows you to compile your code and run it on your browser.
-                                Sync your code across multiple devices and share it with your friends.
                             </p>
 
                             <button onClick={() => navigate("/playground")}>
