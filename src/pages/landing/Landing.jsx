@@ -43,9 +43,9 @@ const Landing = () => {
 
             <header className={scrolled ? "darken" : null}>
                 <img src={brand} alt="Code play" />
-                <button id='signup-btn' onClick={() => navigate("/auth")}>
+                {/* <button id='signup-btn' onClick={() => navigate("/auth")}>
                     Sign up
-                </button>
+                </button> */}
             </header>
 
             <main>
@@ -87,6 +87,7 @@ const Landing = () => {
                                 <p>Type your code effortlessly and compile it on the go.
                                     Codeplay supports over 40+ programming languages.
                                 </p>
+                                <button>Lets Code!</button>
                             </div>
                             <div className="col2">
                                 <ul>
