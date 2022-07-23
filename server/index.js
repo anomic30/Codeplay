@@ -1,30 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const { Magic } = require('@magic-sdk/admin');
-require('dotenv').config();
+const connection = require('./db');
+const users = require('./routes/users');
 
+connection();
 const app = express();
-const magic = new Magic(process.env.MAGIC_SECRET_KEY);
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/api", users);
 
 app.get('/', (req, res) => {
-    res.send('Welcome to Codeplay server v1.0.0!');
-});
-
-app.post('/api/user/login', async (req, res) => {
-    try {
-        console.log("User login called")
-        const didToken = req.headers.authorization.substring(7);
-        await magic.token.validate(didToken);
-        console.log("User is authenticated");
-        return res.status(200).json({ authenticated: true });
-    } catch (error) {
-        console.log("User is not authenticated");
-        return res.status(500).json({ error: error.message });
-    }
+    res.status(200).send('Welcome to Codeplay server v1.0.0!');
 });
 
 app.listen(process.env.PORT || 5000, () => {

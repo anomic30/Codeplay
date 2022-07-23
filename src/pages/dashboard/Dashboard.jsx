@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
+import './Dashboard.scss'
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { magic } from '../../utils/magic';
-import './Dashboard.scss'
+import brand from '../../assets/icons/brand.svg'
+import user_icon from '../../assets/icons/user.svg'
+import Card from '../../components/card/Card';
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -17,8 +20,22 @@ const Dashboard = () => {
     }
     return (
         <div className='dashboard-con'>
-            <h1>This is the dashboard</h1>
-            <button onClick={logout}>Logout</button>
+            <header>
+                <img src={brand} alt="Code play" onClick={() => navigate("/")} />
+                <div className="logout-box">
+                    <img src={user_icon} alt="User" />
+                    <button onClick={logout}>Logout</button>
+                </div>
+
+            </header>
+
+            <p>Your Codes</p>
+            <section className='my-codes'>
+                <Card />
+                <Card />
+                <Card />
+                <Card/>
+            </section>
         </div>
     )
 }
