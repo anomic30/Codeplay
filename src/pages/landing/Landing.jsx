@@ -43,9 +43,9 @@ const Landing = () => {
 
             <header className={scrolled ? "darken" : null}>
                 <img src={brand} alt="Code play" />
-                <button id='signup-btn' onClick={() => navigate("/auth")}>
+                {/* <button id='signup-btn' onClick={() => navigate("/auth")}>
                     Sign up
-                </button>
+                </button> */}
             </header>
 
             <main>
