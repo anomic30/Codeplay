@@ -13,7 +13,7 @@ const App = () => {
     magic.user.isLoggedIn().then((isLoggedIn) => {
       return isLoggedIn
         ? magic.user.getMetadata().then((userData) => setUser(userData))
-        : setUser({ user: null });
+        : setUser(null);
     });
   }, []);
 

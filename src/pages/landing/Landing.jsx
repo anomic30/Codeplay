@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Landing.scss'
 import brand from '../../assets/icons/brand.svg'
 import { useNavigate } from 'react-router-dom'
@@ -11,9 +11,11 @@ import javascript from '../../assets/icons/javascript.png'
 import insta from '../../assets/icons/insta.png'
 import linkedin from '../../assets/icons/linkedin.png'
 import github from '../../assets/icons/github.png'
+import { UserContext } from '../../contexts/UserContext'
 
 const Landing = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [user, setUser] = useContext(UserContext);
 
     //darken the header when scrolled down
     const [scrolled, setScrolled] = useState(false);
@@ -43,9 +45,14 @@ const Landing = () => {
 
             <header className={scrolled ? "darken" : null}>
                 <img src={brand} alt="Code play" />
-                {/* <button id='signup-btn' onClick={() => navigate("/auth")}>
-                    Sign up
-                </button> */}
+                {!user?
+                    <button id='signup-btn' onClick={() => navigate("/auth")}>
+                        Sign in
+                    </button> :
+                    <button id='signup-btn' onClick={() => navigate("/dashboard")}>
+                        Go to Dashboard
+                    </button>
+                }
             </header>
 
             <main>
@@ -57,7 +64,7 @@ const Landing = () => {
                                 No need to install compilers anymore! Codeplay allows you to compile your code and run it on your browser.
                             </p>
 
-                            <button onClick={() => navigate("/playground")}>
+                            <button onClick={() => { user == null ? navigate("/dashboard") : navigate("/playground") }}>
                                 Start Coding Now
                             </button>
                         </div>
@@ -86,7 +93,7 @@ const Landing = () => {
                                 <p>Type your code effortlessly and compile it on the go.
                                     Codeplay supports over 40+ programming languages.
                                 </p>
-                                <button onClick={()=>navigate("/playground")}>Lets Code!</button>
+                                <button onClick={() => { user == null ? navigate("/dashboard") : navigate("/playground") }}>Lets Code!</button>
                             </div>
                             <div className="col2">
                                 <ul>

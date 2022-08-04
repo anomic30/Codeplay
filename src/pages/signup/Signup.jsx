@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../contexts/UserContext'
 import { magic } from '../../utils/magic';
 import { motion } from 'framer-motion';
+import Axios from 'axios';
 
 const Signup = () => {
     const navigate = useNavigate();
     const [user, setUser] = useContext(UserContext);
     const [showLogin, setShowLogin] = useState(false);
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -27,14 +27,9 @@ const Signup = () => {
             let didToken = await magic.auth.loginWithMagicLink({ email });
 
             // Validate didToken with server
-
-            const res = await fetch(`http://localhost:8080/api/user/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + didToken,
-                },
-            });
+            const res = await Axios.post(`${import.meta.env.VITE_APP_SERVER}/login`, {},
+                { headers: { Authorization: `Bearer ${didToken}` } }
+            );
 
             if (res.status === 200) {
                 // Set the UserContext to the now logged in user
@@ -44,6 +39,14 @@ const Signup = () => {
                 window.localStorage.setItem("didToken", newDidToken);
                 console.log(userMetadata);
                 navigate('/dashboard');
+
+                const resp = await Axios.post(`${import.meta.env.VITE_APP_SERVER}/register`,
+                    { magic_id: userMetadata.issuer, email: userMetadata.email },
+                    { headers: { Authorization: `Bearer ${newDidToken}` } }
+                )
+                if (resp.status === 200) {
+                    console.log(resp.data);
+                }
             }
         } catch (error) {
             // setDisabled(false);
@@ -80,14 +83,11 @@ const Signup = () => {
                         <p>No Credit Card Required.</p>
                     </div>
                     <br />
-                    {/* { loading? ():} */}
-                    {!showLogin ? <input type="text" placeholder='Your Name' onChange={(e) => setName(e.target.value)} /> : null}
                     <input type="text" placeholder='Your Email' onChange={(e) => setEmail(e.target.value)} />
 
-                    <button onClick={handleAuth}>
-                        {showLogin ? "Login" : "Sign Up"}
-                    </button>
-                    <p className='mini-text'>Already have an account? <span style={{ color: "#3de8e7", cursor: "pointer" }} onClick={() => setShowLogin(!showLogin)}>{showLogin ? "Sign up" : "Login"}</span></p>
+                    {/* <button onClick={handleAuth}>
+                        Login
+                    </button> */}
                 </div>
             </section>
 

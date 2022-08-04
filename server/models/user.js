@@ -2,19 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    user_name: {
-        type: String,
-        default: 'User',
-    },
     magic_id: {
+        type: String,
+        required: true,
+    },
+    email: {
         type: String,
         required: true,
     },
     codes: [
         {
-            code: {
+            code_id: {
                 type: String,
                 required: true,
+            },
+            code: {
+                type: String,
             },
             file_name: {
                 type: String,

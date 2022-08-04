@@ -1,9 +1,10 @@
-.dashboard-con{
+.dashboard-con {
     min-height: 100vh;
     height: auto;
     width: 100vw;
     background-color: #161616;
-    
+    position: relative;
+
     header {
         padding: 0px 30px;
         box-sizing: border-box;
@@ -14,24 +15,33 @@
         align-items: center;
         background-color: #1F2024;
 
-        .logout-box{
+        .logout-box {
             display: flex;
             align-items: center;
             padding: 0px 15px;
             margin-left: 20px;
             border-left: 2px solid #434343;
         }
+
+        .logout-box img{
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .logout-box img:hover{
+            cursor: pointer;
+        }
     }
 
-    p{
+    p {
         font-family: "Trispace";
         font-size: 16px;
-        color: #23F7ED;
+        color: var(--primary-color);
         margin-top: 2%;
         margin-left: 30px;
     }
 
-    .my-codes{
+    .my-codes {
         width: 100%;
         box-sizing: border-box;
         padding: 1% 30px;
@@ -39,4 +49,69 @@
         flex-wrap: wrap;
     }
 
+    .round-btn {
+        position: absolute;
+        bottom: 2%;
+        right: 2%;
+        transition: 0.5s;
+    }
+
+    .round-btn:hover {
+        transform: rotate(180deg);
+    }
+
+    .round-btn:active {
+        transform: scale(0.9);
+    }
+
+    .create-file {
+        width: 400px;
+        background-color: #0b1d1c9f;
+        padding: 15px;
+        border: 1px solid var(--primary-color);
+        border-radius: 5px;
+        font-family: "Trispace";
+
+        .create-file-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h2 {
+                color: var(--primary-color);
+            }
+        }
+
+        .create-file-body input {
+            margin-top: 20px;
+            width: 100%;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: white;
+            font-size: 20px;
+            padding: 10px 5px;
+            box-sizing: border-box;
+        }
+
+        .create-file-btn button {
+            background-color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-family: 'Manrope';
+            font-size: 1rem;
+            font-weight: 600;
+            color: #121212;
+            cursor: pointer;
+            transition: all .3s ease;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+
+        .create-file-btn button:active{
+            transform: scale(0.9);
+        }
+    }
 }
