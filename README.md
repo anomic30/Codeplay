@@ -47,4 +47,13 @@ npm run dev
 npm run build
 ```
 
+### Working on feat: Dashboard
+
+<p align="center">
+   <br/>
+   <img src="https://user-images.githubusercontent.com/63467479/182868175-ccf28e09-ae66-4dc3-aa10-47d7e4c3e0a5.png" width="70%"/>
+</p>
+
+<br/>
 <img src="https://user-images.githubusercontent.com/63467479/180445107-3f5a285f-0541-4cad-93f6-1068ee09d1a9.svg"/>
+
