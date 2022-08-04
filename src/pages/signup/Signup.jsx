@@ -85,9 +85,9 @@ const Signup = () => {
                     <br />
                     <input type="text" placeholder='Your Email' onChange={(e) => setEmail(e.target.value)} />
 
-                    {/* <button onClick={handleAuth}>
+                    <button onClick={handleAuth}>
                         Login
-                    </button> */}
+                    </button>
                 </div>
             </section>
 

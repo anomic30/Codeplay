@@ -48,9 +48,9 @@ const Dashboard = () => {
 
     const logout = () => {
         magic.user.logout().then(() => {
+            navigate('/');
             setUser(null);
             window.localStorage.removeItem("didToken");
-            navigate('../');
         })
     }
 

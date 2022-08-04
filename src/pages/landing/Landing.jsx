@@ -45,14 +45,14 @@ const Landing = () => {
 
             <header className={scrolled ? "darken" : null}>
                 <img src={brand} alt="Code play" />
-                {!user?
+                {/* {!user?
                     <button id='signup-btn' onClick={() => navigate("/auth")}>
                         Sign in
                     </button> :
                     <button id='signup-btn' onClick={() => navigate("/dashboard")}>
                         Go to Dashboard
                     </button>
-                }
+                } */}
             </header>
 
             <main>
@@ -64,7 +64,7 @@ const Landing = () => {
                                 No need to install compilers anymore! Codeplay allows you to compile your code and run it on your browser.
                             </p>
 
-                            <button onClick={() => { user == null ? navigate("/dashboard") : navigate("/playground") }}>
+                            <button onClick={() => {!user? navigate("/playground") : navigate("/dashboard")}}>
                                 Start Coding Now
                             </button>
                         </div>
@@ -93,7 +93,7 @@ const Landing = () => {
                                 <p>Type your code effortlessly and compile it on the go.
                                     Codeplay supports over 40+ programming languages.
                                 </p>
-                                <button onClick={() => { user == null ? navigate("/dashboard") : navigate("/playground") }}>Lets Code!</button>
+                                <button onClick={() => {!user? navigate("/playground") : navigate("/dashboard")}}>Lets Code!</button>
                             </div>
                             <div className="col2">
                                 <ul>
