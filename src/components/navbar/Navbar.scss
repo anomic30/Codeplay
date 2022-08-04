@@ -22,6 +22,13 @@
     .acc{
         max-width: 400px;
         width: 100%;
-        background-color: aqua;
+        display: flex;
+        justify-content: flex-end;
+
+        img{
+            width: 30px;
+            height: 30px;
+            margin: 0px 10px;
+        }
     }
 }

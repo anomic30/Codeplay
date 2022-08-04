@@ -5,6 +5,7 @@ import LanguageDropdown from '../languageDropdown/LanguageDropdown'
 import ThemeDropdown from '../themeDropdown/ThemeDropdown'
 import { useNavigate } from 'react-router-dom'
 import FontSizeSelector from '../fontsizeSelector/FontSizeSelector'
+import dashboard_icon from '../../assets/icons/dashboard.png'
 
 const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, theme }) => {
     const navigate = useNavigate()
@@ -19,7 +20,7 @@ const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, theme })
                 </div>
             </div>
             <div className="acc">
-                <p></p>
+                <img src={dashboard_icon} alt="Home" onClick={()=>navigate("/dashboard", { replace: true })}/>
             </div>
         </header>
     )

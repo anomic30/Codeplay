@@ -40,11 +40,12 @@ const Dashboard = () => {
     }, [navigate, user])
 
     useEffect(() => {
-        Axios.get(`${import.meta.env.VITE_APP_SERVER}/getCodes`,
+        Axios.post(`${import.meta.env.VITE_APP_SERVER}/getCodes`,
+            {},
             { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } }).then((res) => {
                 setCodes(res.data.codes);
-        })
-    },[])
+            })
+    }, [])
 
     const logout = () => {
         magic.user.logout().then(() => {
@@ -67,7 +68,7 @@ const Dashboard = () => {
         try {
             const resp = await Axios.post(`${import.meta.env.VITE_APP_SERVER}/createFile`,
                 postObj,
-                { headers: { Authorization: "Bearer "+window.localStorage.getItem('didToken') } }
+                { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } }
             );
             if (resp.status === 200) {
                 navigate(`/playground`, { state: postObj });
@@ -83,7 +84,7 @@ const Dashboard = () => {
             <header>
                 <img src={brand} alt="Code play" onClick={() => navigate("/")} />
                 <div className="logout-box">
-                    <img src={logout_icon} alt="logout" onClick={logout}/>
+                    <img src={logout_icon} alt="logout" onClick={logout} />
                 </div>
 
             </header>
@@ -91,7 +92,7 @@ const Dashboard = () => {
             <p>Your Codes</p>
             <section className='my-codes'>
                 {codes.map((code, idx) => {
-                    return <Card key={idx} props={code} />
+                    return <Card key={idx} props={code}/>
                 })}
             </section>
 

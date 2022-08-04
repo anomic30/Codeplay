@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Playground.scss'
 import Navbar from '../../components/navbar/Navbar'
 import CodeEditor from '../../components/codeEditor/CodeEditor'
@@ -7,15 +7,49 @@ import { languageOptions } from '../../utils/languages';
 import { generateTheme } from '../../utils/generateTheme'
 import Axios from 'axios';
 import spinner from '../../assets/icons/spinner.svg'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Playground = () => {
-    const [code, setCode] = useState("");
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [code, setCode] = useState(location?.state?.code || "");
     const [language, setLanguage] = useState(languageOptions[0]);
     const [theme, setTheme] = useState("vs-dark");
     const [fontSize, setFontSize] = useState(14);
     const [customInput, setCustomInput] = useState("");
     const [outputDetails, setOutputDetails] = useState(null);
     const [processing, setProcessing] = useState(null);
+
+    useEffect(() => {
+        console.log(location?.state);
+    })
+    
+    const handlePatch = async () => {
+        const postObj = {
+            code_id: location?.state?.code_id,
+            code,
+            file_name: location?.state?.file_name,
+            total_lines: 0,
+            last_edited: new Date().toLocaleString(),
+        }
+        try {
+            const resp = await Axios.patch(`${import.meta.env.VITE_APP_SERVER}/patchCode`,
+                postObj,
+                { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } })
+            console.log(resp.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    //run handlePatch every 10 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handlePatch();
+        }, 10000);
+        return () => clearInterval(interval);
+    }, []);
 
     const handleLanguageChange = (selectedOption) => {
         console.log(selectedOption);

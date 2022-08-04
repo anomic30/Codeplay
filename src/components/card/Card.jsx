@@ -1,10 +1,12 @@
 import React from 'react'
 import './Card.scss'
 import kebab from '../../assets/icons/kebab.svg'
+import { useNavigate } from 'react-router-dom'
 
-const Card = ({props}) => {
+const Card = ({ props }) => {
+    const navigate = useNavigate();
     return (
-        <div className='card-con'>
+        <div className='card-con' onClick={()=>navigate(`/playground`, { state: props })}>
             <div className="options">
                 <img src={kebab} alt="" />
             </div>

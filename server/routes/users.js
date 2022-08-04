@@ -70,7 +70,7 @@ router.post('/createFile', authMiddleware, async (req, res) => {
     return res.status(200).json({ message: 'Code added successfully' });
 });
 
-router.patch('/updateFile', authMiddleware, async (req, res) => {
+router.patch('/patchCode', authMiddleware, async (req, res) => {
     const magic_id = req.magic_id;
     const { code_id, code, file_name, total_lines, last_edited } = req.body;
     try {
@@ -93,7 +93,7 @@ router.patch('/updateFile', authMiddleware, async (req, res) => {
     }
 });
 
-router.get('/getCodes', authMiddleware, async (req, res) => {
+router.post('/getCodes', authMiddleware, async (req, res) => {
     const magic_id = req.magic_id;
     try {
         const user = await User.findOne({ magic_id });
