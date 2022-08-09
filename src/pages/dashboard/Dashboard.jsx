@@ -40,10 +40,10 @@ const Dashboard = () => {
     }, [navigate, user])
 
     useEffect(() => {
-        Axios.post(`${import.meta.env.VITE_APP_SERVER}/getCodes`,
-            {},
+        Axios.get(`${import.meta.env.VITE_APP_SERVER}/getCodes`,
             { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } }).then((res) => {
                 setCodes(res.data.codes);
+                console.log(res.data.codes);
             })
     }, [])
 
@@ -60,6 +60,7 @@ const Dashboard = () => {
         const postObj = {
             code_id: code_id,
             code: '',
+            language: {},
             file_name: fileName,
             total_lines: 0,
             last_edited: new Date().toISOString(),
@@ -92,7 +93,7 @@ const Dashboard = () => {
             <p>Your Codes</p>
             <section className='my-codes'>
                 {codes.map((code, idx) => {
-                    return <Card key={idx} props={code}/>
+                    return <Card key={idx} props={code} setCodes={setCodes}/>
                 })}
             </section>
 

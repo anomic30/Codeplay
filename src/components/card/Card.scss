@@ -6,6 +6,7 @@
     margin: 0px 20px 20px 0px;
     border-radius: 5px;
     filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.5));
+    transition: 0.3s;
 
     .options{
         display: flex;
@@ -16,8 +17,8 @@
         img{
             padding-top: 4px;
             padding-bottom: 4px;
-            height: 30px;
-            width: 30px;
+            height: 24px;
+            width: 24px;
             // border-left: 1px solid grey;
         }
     }
@@ -58,4 +59,15 @@
             }
         }
     }
+}
+
+.card-con:hover{
+    filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8));
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+.card-con:active{
+    filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.5));
+    transform: scale(0.9);
 }

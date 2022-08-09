@@ -7,14 +7,14 @@ import { useNavigate } from 'react-router-dom'
 import FontSizeSelector from '../fontsizeSelector/FontSizeSelector'
 import dashboard_icon from '../../assets/icons/dashboard.png'
 
-const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, theme }) => {
+const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, theme, codeLang }) => {
     const navigate = useNavigate()
     return (
         <header className='app-nav'>
             <div className='play-nav'>
                 <img src={brand} alt="Code play" onClick={() => navigate("/")} />
                 <div className="nav-controls">
-                    <LanguageDropdown handleLanguageChange={handleLanguageChange} />
+                    <LanguageDropdown handleLanguageChange={handleLanguageChange} codeLang={codeLang} />
                     <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
                     <FontSizeSelector setFontSize={setFontSize}/>
                 </div>

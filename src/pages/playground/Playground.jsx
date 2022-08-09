@@ -14,9 +14,9 @@ const Playground = () => {
     const location = useLocation();
 
     const [code, setCode] = useState(location?.state?.code || "");
-    const [language, setLanguage] = useState(languageOptions[0]);
+    const [language, setLanguage] = useState(location?.state?.language && Object.keys(location?.state?.language).length===0? languageOptions[0]:location?.state?.language);
     const [theme, setTheme] = useState("vs-dark");
-    const [fontSize, setFontSize] = useState(14);
+    const [fontSize, setFontSize] = useState(16);
     const [customInput, setCustomInput] = useState("");
     const [outputDetails, setOutputDetails] = useState(null);
     const [processing, setProcessing] = useState(null);
@@ -29,6 +29,7 @@ const Playground = () => {
         const postObj = {
             code_id: location?.state?.code_id,
             code,
+            language,
             file_name: location?.state?.file_name,
             total_lines: 0,
             last_edited: new Date().toLocaleString(),
@@ -144,6 +145,7 @@ const Playground = () => {
                 handleThemeChange={handleThemeChange}
                 setFontSize={setFontSize}
                 theme={theme}
+                codeLang={language}
             />
             <div className='sub'>
                 <CodeEditor language={language?.value}

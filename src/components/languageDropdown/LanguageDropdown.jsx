@@ -3,12 +3,12 @@ import Select from "react-select";
 import { languageOptions } from '../../utils/languages';
 import { customStyles } from '../../utils/dropdownStyles';
 
-const LanguageDropdown = ({handleLanguageChange}) => {
+const LanguageDropdown = ({handleLanguageChange, codeLang}) => {
     return (
         <Select
             placeholder="Select a language"
             options={languageOptions}
-            defaultValue={languageOptions[0]}
+            defaultValue={codeLang || languageOptions[0]}
             styles={customStyles}
             onChange={(selectedOption) => handleLanguageChange(selectedOption)}
         />

@@ -5,7 +5,7 @@ const FontSizeSelector = ({setFontSize}) => {
   return (
     <div className='size-con'>
         <span>Font Size:</span>
-        <input type="number" defaultValue={14} onChange={(e)=>{setFontSize(e.target.value)}}/>
+        <input type="number" defaultValue={16} onChange={(e)=>{setFontSize(e.target.value)}}/>
     </div>
   )
 }

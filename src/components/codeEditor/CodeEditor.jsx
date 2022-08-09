@@ -6,7 +6,6 @@ const CodeEditor = ({language, theme, code, setCode, fontSize}) => {
     const [value, setvalue] = useState(code || "");
 
     const handleEditorChange = (value) => {
-        console.log(value);
         setCode(value);
     }
 
