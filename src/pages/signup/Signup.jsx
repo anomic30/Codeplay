@@ -16,7 +16,7 @@ const Signup = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        user && user.issuer && navigate('/dashboard');
+        window.localStorage.getItem("didToken") && user && user.issuer && navigate('/dashboard');
     }, [user, navigate]);
 
     const handleAuth = async () => {

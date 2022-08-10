@@ -101,7 +101,7 @@ router.get('/getCodes', authMiddleware, async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-        return res.status(200).json({ codes: user.codes });
+        return res.status(200).json({ codes: user.codes, theme: user.theme });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -127,6 +127,21 @@ router.delete('/deleteCode/:code_id', authMiddleware, async (req, res) => {
     }
 });
 
+router.patch('/setTheme', authMiddleware, async (req, res) => {
+    const magic_id = req.magic_id;
+    const { theme } = req.body;
+    try {
+        const user = await User.findOne({ magic_id });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        user.theme = theme;
+        await user.save();
+        return res.status(200).json({ message: 'Theme updated successfully' });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
 
 
 module.exports = router;

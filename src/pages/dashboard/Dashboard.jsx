@@ -35,7 +35,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!user) {
-            navigate('/auth');
+            navigate('/');
         }
     }, [navigate, user])
 
@@ -43,6 +43,7 @@ const Dashboard = () => {
         Axios.get(`${import.meta.env.VITE_APP_SERVER}/getCodes`,
             { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } }).then((res) => {
                 setCodes(res.data.codes);
+                window.localStorage.setItem("theme", JSON.stringify(res.data.theme));
                 console.log(res.data.codes);
             })
     }, [])

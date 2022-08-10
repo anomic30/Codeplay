@@ -14,7 +14,7 @@ const Playground = () => {
     const location = useLocation();
 
     const [code, setCode] = useState(location?.state?.code || "");
-    const [language, setLanguage] = useState(location?.state?.language && Object.keys(location?.state?.language).length===0? languageOptions[0]:location?.state?.language);
+    const [language, setLanguage] = useState(location?.state?.language && Object.keys(location?.state?.language).length!==0? location?.state?.language: languageOptions[0]);
     const [theme, setTheme] = useState("vs-dark");
     const [fontSize, setFontSize] = useState(16);
     const [customInput, setCustomInput] = useState("");
@@ -26,10 +26,14 @@ const Playground = () => {
     })
     
     const handlePatch = async () => {
-        const postObj = {
+        if (!window.localStorage.getItem("didToken")) {
+            return;
+        }
+        console.log(language);
+        let postObj = {
             code_id: location?.state?.code_id,
-            code,
-            language,
+            code: code,
+            language: language,
             file_name: location?.state?.file_name,
             total_lines: 0,
             last_edited: new Date().toLocaleString(),
@@ -46,25 +50,54 @@ const Playground = () => {
 
     //run handlePatch every 10 seconds
     useEffect(() => {
-        const interval = setInterval(() => {
+        //create a timeout
+        const timeout = setTimeout(() => {
             handlePatch();
-        }, 10000);
-        return () => clearInterval(interval);
-    }, []);
+        }, 2000);
+        //clear the timeout
+        return () => clearTimeout(timeout);
+
+        // let interval = setInterval(() => {
+        //     handlePatch();
+        // }, 10000);
+        // return () => clearInterval(interval);
+    }, [code, language]);
 
     const handleLanguageChange = (selectedOption) => {
         console.log(selectedOption);
         setLanguage(selectedOption);
     }
 
-    const handleThemeChange = (theme) => {
+    const print = () => {
+        console.log(language)
+    }
+
+    const handleThemeChange = async (theme) => {
+        window.localStorage.setItem("theme", JSON.stringify(theme));
         console.log(theme);
         if (["light", "vs-dark"].includes(theme.value)) {
             setTheme(theme);
         } else {
             generateTheme(theme.value).then(() => setTheme(theme));
         }
+        if (window.localStorage.getItem("didToken")) {
+            const resp = await Axios.patch(`${import.meta.env.VITE_APP_SERVER}/setTheme`, { theme }, { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } });
+            console.log(resp.data.message);
+        }
     }
+
+    useEffect(() => {
+        if (window.localStorage.getItem("theme") === undefined) {
+            window.localStorage.setItem("theme", JSON.stringify({ value: "vs-dark", label: "Dark" }));
+        }
+        let theme = JSON.parse(window.localStorage.getItem("theme"));
+        //if theme object is not empty
+        if (["light", "vs-dark"].includes(theme.value)) {
+            setTheme(theme);
+        } else {
+            generateTheme(theme.value).then(() => setTheme(theme));
+        }
+    },[])
 
     const handleCompile = () => {
         console.log("handleCompile");
@@ -144,8 +177,9 @@ const Playground = () => {
             <Navbar handleLanguageChange={handleLanguageChange}
                 handleThemeChange={handleThemeChange}
                 setFontSize={setFontSize}
-                theme={theme}
+                usertheme={theme}
                 codeLang={language}
+                print={print}
             />
             <div className='sub'>
                 <CodeEditor language={language?.value}

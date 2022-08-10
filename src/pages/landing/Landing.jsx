@@ -45,14 +45,14 @@ const Landing = () => {
 
             <header className={scrolled ? "darken" : null}>
                 <img src={brand} alt="Code play" />
-                {/* {!user?
+                {!user?
                     <button id='signup-btn' onClick={() => navigate("/auth")}>
                         Sign in
                     </button> :
                     <button id='signup-btn' onClick={() => navigate("/dashboard")}>
                         Go to Dashboard
                     </button>
-                } */}
+                }
             </header>
 
             <main>

@@ -17,6 +17,14 @@
             display: flex;
             gap: 10px;
         }
+
+        .brand-logo{
+            margin-right: 20px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
     }
 
     .acc{
@@ -29,6 +37,29 @@
             width: 30px;
             height: 30px;
             margin: 0px 10px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        button {
+            background-color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            padding: 8px 20px;
+            font-family: 'Manrope';
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1e;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all .3s ease;
+    
+            &:hover {
+                background-color: #1a1a1e;
+                color: #fff;
+            }
         }
     }
 }
