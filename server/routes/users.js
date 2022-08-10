@@ -37,6 +37,7 @@ router.post('/register', async (req, res) => {
             const newUser = new User({
                 magic_id: req.body.magic_id,
                 email: req.body.email,
+                theme: req.body.theme,
                 codes: [],
             });
             console.log("Saving user");

@@ -81,15 +81,19 @@ const Playground = () => {
             generateTheme(theme.value).then(() => setTheme(theme));
         }
         if (window.localStorage.getItem("didToken")) {
-            const resp = await Axios.patch(`${import.meta.env.VITE_APP_SERVER}/setTheme`, { theme }, { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } });
-            console.log(resp.data.message);
+            try {
+                const resp = await Axios.patch(`${import.meta.env.VITE_APP_SERVER}/setTheme`, { theme }, { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } });
+                console.log(resp.data.message);
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 
     useEffect(() => {
-        if (window.localStorage.getItem("theme") === undefined) {
-            window.localStorage.setItem("theme", JSON.stringify({ value: "vs-dark", label: "Dark" }));
-        }
+        // if (window.localStorage.getItem("theme") === undefined) {
+        //     window.localStorage.setItem("theme", JSON.stringify({ value: "vs-dark", label: "Dark" }));
+        // }
         let theme = JSON.parse(window.localStorage.getItem("theme"));
         //if theme object is not empty
         if (["light", "vs-dark"].includes(theme.value)) {

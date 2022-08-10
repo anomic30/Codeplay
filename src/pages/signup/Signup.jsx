@@ -41,7 +41,7 @@ const Signup = () => {
                 navigate('/dashboard');
 
                 const resp = await Axios.post(`${import.meta.env.VITE_APP_SERVER}/register`,
-                    { magic_id: userMetadata.issuer, email: userMetadata.email },
+                    { magic_id: userMetadata.issuer, email: userMetadata.email, theme: { value: "vs-dark", label: "Dark" } },
                     { headers: { Authorization: `Bearer ${newDidToken}` } }
                 )
                 if (resp.status === 200) {

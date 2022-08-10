@@ -15,16 +15,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion'
 import Axios from 'axios';
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -50,13 +40,17 @@ const Dashboard = () => {
 
     const logout = () => {
         magic.user.logout().then(() => {
-            navigate('/');
-            setUser(null);
             window.localStorage.removeItem("didToken");
+            setUser(null);
+            navigate('/');
+            window.location.reload();
         })
     }
 
     const handleCreateFile = async () => {
+        if (fileName.length <= 0) {
+            return;
+        }
         const code_id = uuidv4();
         const postObj = {
             code_id: code_id,

@@ -9,7 +9,7 @@ const App = () => {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    setUser({ loading: true });
+    window.localStorage.setItem("theme", JSON.stringify({ value: "vs-dark", label: "Dark" }));
     magic.user.isLoggedIn().then((isLoggedIn) => {
       return isLoggedIn
         ? magic.user.getMetadata().then((userData) => setUser(userData))

@@ -21,9 +21,7 @@ const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, userthem
             </div>
             <div className="acc">
                 {!window.localStorage.getItem("didToken") ? <button id='signup-btn' onClick={() => navigate("/auth")}>Login</button> : 
-                <>
                 <img src={dashboard_icon} alt="Home" onClick={() => navigate("/dashboard", { replace: true })} />
-                </>
                 }
             </div>
         </header>
