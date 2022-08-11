@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import FontSizeSelector from '../fontsizeSelector/FontSizeSelector'
 import dashboard_icon from '../../assets/icons/dashboard.png'
 
-const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, usertheme, codeLang, print }) => {
+const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, usertheme, codeLang}) => {
     const navigate = useNavigate()
     return (
         <header className='app-nav'>

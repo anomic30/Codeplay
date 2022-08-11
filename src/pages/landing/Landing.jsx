@@ -4,14 +4,18 @@ import brand from '../../assets/icons/brand.svg'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import code_space from '../../assets/images/code-space.png'
+import dashboard from '../../assets/images/dashboard.png'
 import cpp from "../../assets/icons/cpp.png"
 import java from '../../assets/icons/java.png'
 import python from '../../assets/icons/python.png'
 import javascript from '../../assets/icons/javascript.png'
+import swift from '../../assets/icons/swift.png'
+import more from '../../assets/icons/more.png'
 import insta from '../../assets/icons/insta.png'
 import linkedin from '../../assets/icons/linkedin.png'
 import github from '../../assets/icons/github.png'
 import { UserContext } from '../../contexts/UserContext'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Landing = () => {
     const navigate = useNavigate();
@@ -42,7 +46,7 @@ const Landing = () => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.2 }}>
-
+            <Toaster/>
             <header className={scrolled ? "darken" : null}>
                 <img src={brand} alt="Code play" />
                 {!user?
@@ -116,9 +120,32 @@ const Landing = () => {
                                         <img src={javascript} alt="JavaScript" />
                                         <p>JavaScript</p>
                                     </li>
+
+                                    <li>
+                                        <img src={swift} alt="Swift" />
+                                        <p>Swift</p>
+                                    </li>
+
+                                    <li>
+                                        <img src={more} alt="More.." />
+                                        <p>Languages</p>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <section className='app-desc'>
+                    <div className="container">
+                        <div className="bar" style={{ margin: "0px auto" }}></div>
+                        <h2>Sync your codes across devices</h2>
+                        <p>Never lose your code! Codeplay automatically saves your code.<br />
+                            Sign in now to use this feature.</p>
+                        <div className="img-con">
+                            <img src={dashboard} alt="Dashboard" />
+                        </div>
+
                     </div>
                 </section>
 

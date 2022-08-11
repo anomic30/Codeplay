@@ -116,12 +116,16 @@
         }
 
         .img-con {
+            max-width: 1290px;
             padding: 50px 0px;
-            display: flex;
-            justify-content: center;
+            margin: 0 auto;
+            max-width: 75%;
+            // display: flex;
+            // justify-content: center;
 
             img {
-                padding: 0px 15px;
+                width: 100%;
+                // padding: 0px 15px;
                 background-size: contain;
             }
         }
@@ -160,7 +164,7 @@
             }
 
             .col2 {
-                width: 30%;
+                width: 60%;
 
                 ul {
                     padding: 0;
@@ -172,7 +176,8 @@
 
                 li {
                     list-style: none;
-                    max-width: 40%;
+                    width: 100%;
+                    max-width: 30%;
                     background: linear-gradient(132.03deg, rgba(18, 214, 214, .1) 4.19%, rgba(18, 214, 214, 0) 81.59%);
                     margin-right: 12px;
                     margin-bottom: 50px;
@@ -296,6 +301,7 @@
         .hero-con {
             padding-bottom: 230px;
         }
+        
     }
 
     @media only screen and (max-width: 1300px) {
@@ -308,6 +314,44 @@
         .hero-con {
             padding-bottom: 130px;
             padding-top: 80px;
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        .features-con{
+            padding: 60px 0;
+            .row{
+                flex-wrap: wrap;
+            }
+
+            .col1, .col2{
+                width: 100% !important;
+            }
+
+            .col2 ul{
+                padding: 20px 2px !important;
+                justify-content: center;
+
+                li{
+                    max-width: 40% !important;
+                }
+            }
+        }
+
+        .connect-con{
+            .col2{
+                width: 100% !important;
+            }
+
+            .col3{
+                display: none;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .app-desc .img-con{
+            max-width: 90%;
         }
     }
 }

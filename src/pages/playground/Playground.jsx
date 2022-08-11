@@ -8,6 +8,7 @@ import { generateTheme } from '../../utils/generateTheme'
 import Axios from 'axios';
 import spinner from '../../assets/icons/spinner.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Playground = () => {
     const navigate = useNavigate();
@@ -23,7 +24,17 @@ const Playground = () => {
 
     useEffect(() => {
         console.log(location?.state);
-    })
+        if (!window.localStorage.getItem("didToken")) {
+            toast(`Log in to sync your code.`, {
+                icon: '💿',
+                style: {
+                  borderRadius: '5px',
+                  background: '#1a1a1e',
+                    color: '#a9acbb',
+                },
+            });
+        }
+    },[])
     
     const handlePatch = async () => {
         if (!window.localStorage.getItem("didToken")) {
@@ -66,10 +77,6 @@ const Playground = () => {
     const handleLanguageChange = (selectedOption) => {
         console.log(selectedOption);
         setLanguage(selectedOption);
-    }
-
-    const print = () => {
-        console.log(language)
     }
 
     const handleThemeChange = async (theme) => {
@@ -178,12 +185,12 @@ const Playground = () => {
 
     return (
         <div className='playground-con'>
+            <Toaster position="bottom-center"/>
             <Navbar handleLanguageChange={handleLanguageChange}
                 handleThemeChange={handleThemeChange}
                 setFontSize={setFontSize}
                 usertheme={theme}
                 codeLang={language}
-                print={print}
             />
             <div className='sub'>
                 <CodeEditor language={language?.value}

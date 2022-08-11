@@ -7,6 +7,8 @@ import { UserContext } from '../../contexts/UserContext'
 import { magic } from '../../utils/magic';
 import { motion } from 'framer-motion';
 import Axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
+import spinner_icon from "../../assets/icons/spinner.svg";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -21,7 +23,7 @@ const Signup = () => {
 
     const handleAuth = async () => {
         try {
-            // setDisabled(true);
+            setLoading(true);
 
             // Trigger Magic link to be sent to user
             let didToken = await magic.auth.loginWithMagicLink({ email });
@@ -38,6 +40,14 @@ const Signup = () => {
                 let newDidToken = await magic.user.getIdToken({ lifespan: 24 * 60 * 60 * 7 });
                 window.localStorage.setItem("didToken", newDidToken);
                 console.log(userMetadata);
+                toast(`Logged in as: ${userMetadata.email}`, {
+                    icon: '✅',
+                    style: {
+                        borderRadius: '5px',
+                        background: '#1a1a1e',
+                        color: '#a9acbb',
+                    },
+                });
                 navigate('/dashboard');
 
                 const resp = await Axios.post(`${import.meta.env.VITE_APP_SERVER}/register`,
@@ -50,6 +60,15 @@ const Signup = () => {
             }
         } catch (error) {
             // setDisabled(false);
+            setLoading(false);
+            toast(error, {
+                icon: '❌',
+                style: {
+                    borderRadius: '5px',
+                    background: '#1a1a1e',
+                    color: '#a9acbb',
+                },
+            });
             console.log(error);
         }
     }
@@ -68,6 +87,7 @@ const Signup = () => {
             exit="exit"
             transition={{ duration: 0.2 }}
         >
+            <Toaster />
             <header>
                 <img src={brand} alt="Code play" onClick={() => navigate("/")} />
             </header>
@@ -85,9 +105,10 @@ const Signup = () => {
                     <br />
                     <input type="text" placeholder='Your Email' onChange={(e) => setEmail(e.target.value)} />
 
-                    <button onClick={handleAuth}>
-                        Login
-                    </button>
+                    {loading ? <img src={spinner_icon} alt="Loading..." className='spinner'/> :
+                        <button onClick={handleAuth}>
+                            Login
+                        </button>}
                 </div>
             </section>
 

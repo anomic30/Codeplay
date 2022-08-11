@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 // import Modal from 'react-modal';
 import { motion, AnimatePresence } from 'framer-motion'
 import Axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Dashboard = () => {
@@ -25,6 +26,14 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!user) {
+            toast(`Please login to access the dashboard!`, {
+                icon: '⚠️',
+                style: {
+                    borderRadius: '5px',
+                    background: '#1a1a1e',
+                    color: '#a9acbb',
+                },
+            });
             navigate('/');
         }
     }, [navigate, user])
@@ -42,8 +51,14 @@ const Dashboard = () => {
         magic.user.logout().then(() => {
             window.localStorage.removeItem("didToken");
             setUser(null);
+            toast(`Successfully logged out!`, {
+                style: {
+                    borderRadius: '5px',
+                    background: '#1a1a1e',
+                    color: '#a9acbb',
+                },
+            });
             navigate('/');
-            window.location.reload();
         })
     }
 
@@ -77,6 +92,7 @@ const Dashboard = () => {
 
     return (
         <motion.div className='dashboard-con'>
+            <Toaster />
             <header>
                 <img src={brand} alt="Code play" onClick={() => navigate("/")} />
                 <div className="logout-box">
@@ -88,7 +104,7 @@ const Dashboard = () => {
             <p>Your Codes</p>
             <section className='my-codes'>
                 {codes.map((code, idx) => {
-                    return <Card key={idx} props={code} setCodes={setCodes}/>
+                    return <Card key={idx} props={code} setCodes={setCodes} />
                 })}
             </section>
 
