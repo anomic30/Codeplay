@@ -8,15 +8,26 @@
 
 # Codeplay
 
-No need to install compilers anymore! Codeplay allows you to compile your code and run it on your browser. It supports over 40+ programming languages.
+No need to install compilers anymore! Codeplay allows you to compile your code and run it on your browser. It also sync your codes across devices so that you dont lose anything!
 ## About the project!
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/63467479/180439962-30810418-0491-4e1e-a42f-8e11e2082a70.png"/>
 </p>
 
+- Compile and run your codes
+- Supports 46 languages
 - Customizable code editor
 - Choose from a wide range of themes
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/63467479/184216691-ceb2d496-714e-47c4-ac26-a07befaf8798.png"/>
+</p>
+
+- Comes with a dashboard
+- Automatically sync your codes
+- Login to use this feature
+
 
 ## Getting started
 
@@ -36,23 +47,16 @@ cd Codeplay/
 npm install
 ```
 ### ⚠️ Important!
-In order to use this for your own purpose, you need the environment. Subscribe to [Judge0 API]("https://rapidapi.com/judge0-official/api/judge0-ce/pricing") and put the variables in a .env file.
+In order to use this for your own purpose, you need the API keys. For the compiler subscribe to [Judge0 API]("https://rapidapi.com/judge0-official/api/judge0-ce/pricing") and put the variables in a .env file. Similarly get the API keys for passwordless authentication from [Magic]("https://magic.link/"). For the backend, create a MongoDB Atlas server and setup the env variables accordingly.
 
 ### Starting the application
 
 ```bash
-# To run the frontend
+# To run the frontend OR backend
 npm run dev
 # To build the application
 npm run build
 ```
-
-### Working on feat: Dashboard
-
-<p align="center">
-   <br/>
-   <img src="https://user-images.githubusercontent.com/63467479/182868175-ccf28e09-ae66-4dc3-aa10-47d7e4c3e0a5.png" width="70%"/>
-</p>
 
 <br/>
 <img src="https://user-images.githubusercontent.com/63467479/180445107-3f5a285f-0541-4cad-93f6-1068ee09d1a9.svg"/>
