@@ -25,8 +25,8 @@ const Playground = () => {
     useEffect(() => {
         console.log(location?.state);
         if (!window.localStorage.getItem("didToken")) {
-            toast(`Log in to sync your code.`, {
-                icon: '💿',
+            toast(`Log in to save your code.`, {
+                icon: '👋',
                 style: {
                   borderRadius: '5px',
                   background: '#1a1a1e',

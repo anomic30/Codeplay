@@ -11,9 +11,9 @@ import python from '../../assets/icons/python.png'
 import javascript from '../../assets/icons/javascript.png'
 import swift from '../../assets/icons/swift.png'
 import more from '../../assets/icons/more.png'
-import insta from '../../assets/icons/insta.png'
-import linkedin from '../../assets/icons/linkedin.png'
-import github from '../../assets/icons/github.png'
+import insta from '../../assets/icons/insta.svg'
+import linkedin from '../../assets/icons/linkedin.svg'
+import github from '../../assets/icons/github.svg'
 import { UserContext } from '../../contexts/UserContext'
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -139,8 +139,8 @@ const Landing = () => {
                 <section className='app-desc'>
                     <div className="container">
                         <div className="bar" style={{ margin: "0px auto" }}></div>
-                        <h2>Sync your codes across devices</h2>
-                        <p>Never lose your code! Codeplay automatically saves your code.<br />
+                        <h2>Save & sync your codes across devices</h2>
+                        <p>Never lose your code ever again! Codeplay automatically saves your code in the background.<br />
                             Sign in now to use this feature.</p>
                         <div className="img-con">
                             <img src={dashboard} alt="Dashboard" />
