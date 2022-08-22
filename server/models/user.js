@@ -1,49 +1,28 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
+const { Entity, Schema } = require('redis-om')
 
-const userSchema = new Schema({
+class User extends Entity {
+    toJSON() {
+        return {
+            id: this.entityId,
+            magic_id: this.magic_id,
+            email: this.email,
+            theme: this.theme,
+        }
+    }
+}
+
+const userSchema = new Schema(User, {
     magic_id: {
-        type: String,
-        required: true,
+        type: 'string'
     },
     email: {
-        type: String,
-        required: true,
+        type: 'string'
     },
     theme: {
-        type: Object
+        type: 'string'
     },
-    codes: [
-        {
-            code_id: {
-                type: String,
-                required: true,
-            },
-            code: {
-                type: String,
-            },
-            language: {
-                type: Object,
-            },
-            file_name: {
-                type: String,
-                required: true,
-            },
-            total_lines: {
-                type: Number,
-                required: true,
-            },
-            last_edited: {
-                type: Date,
-                required: true,
-            },
-            created_at: {
-                type: Date,
-                required: true,
-            }
-        }
-    ]
 });
 
-const userModel = mongoose.model('users', userSchema);
-module.exports = userModel;
+module.exports = userSchema;
