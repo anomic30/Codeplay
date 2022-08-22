@@ -12,7 +12,7 @@ const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, userthem
     return (
         <header className='app-nav'>
             <div className='play-nav'>
-                <img src={brand} alt="Code play" onClick={() => navigate("/")} className="brand-logo"/>
+                <img src={brand} alt="Code play" onClick={() => navigate(-1)} className="brand-logo"/>
                 <div className="nav-controls">
                     <LanguageDropdown handleLanguageChange={handleLanguageChange} codeLang={codeLang} />
                     <ThemeDropdown handleThemeChange={handleThemeChange} usertheme={usertheme} />

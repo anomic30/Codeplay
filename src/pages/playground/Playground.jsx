@@ -9,8 +9,13 @@ import Axios from 'axios';
 import spinner from '../../assets/icons/spinner.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
+import Mobile from '../feature/Mobile'
 
 const Playground = () => {
+    if (window.visualViewport.width < 1200) {
+        return <Mobile />
+    }
+
     const navigate = useNavigate();
     const location = useLocation();
 

@@ -54,7 +54,7 @@ const Landing = () => {
                         Sign in
                     </button> :
                     <button id='signup-btn' onClick={() => navigate("/dashboard")}>
-                        Go to Dashboard
+                        Dashboard
                     </button>
                 }
             </header>
@@ -156,8 +156,8 @@ const Landing = () => {
                                 <h3>
                                     <div className="bar"></div>
                                     Development <br />is Still in <br />Progress</h3>
-                                <p>Codeplay is still in the development phase. I am planning to add more
-                                    features soon. Connect with me to discuss some new ideas!
+                                <p>Codeplay is currently in the alpha stage. I am planning to add more
+                                    features soon. Raise an isssue to propose a new feature!
                                 </p>
                                 <div className="socials">
                                     <a href="https://www.instagram.com/codermav/" target="__blank">
