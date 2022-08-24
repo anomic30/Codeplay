@@ -6,6 +6,8 @@ import ThemeDropdown from '../themeDropdown/ThemeDropdown'
 import { useNavigate } from 'react-router-dom'
 import FontSizeSelector from '../fontsizeSelector/FontSizeSelector'
 import dashboard_icon from '../../assets/icons/dashboard.png'
+import Tippy from '@tippyjs/react'
+import 'tippy.js/dist/tippy.css'
 
 const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, usertheme, codeLang}) => {
     const navigate = useNavigate()
@@ -21,7 +23,7 @@ const Navbar = ({ handleLanguageChange, handleThemeChange, setFontSize, userthem
             </div>
             <div className="acc">
                 {!window.localStorage.getItem("didToken") ? <button id='signup-btn' onClick={() => navigate("/auth")}>Login</button> : 
-                <img src={dashboard_icon} alt="Home" onClick={() => navigate("/dashboard", { replace: true })} />
+                <Tippy content="Dashboard" placement="left"><img src={dashboard_icon} alt="Home" onClick={() => navigate("/dashboard", { replace: true })} /></Tippy>
                 }
             </div>
         </header>

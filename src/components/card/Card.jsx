@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { DateTime } from 'luxon';
 import { iconNames } from '../../utils/icon-names';
 import Axios from 'axios';
+import Tippy from '@tippyjs/react'
+import 'tippy.js/dist/tippy.css'
 
 const Card = ({ props, setCodes }) => {
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ const Card = ({ props, setCodes }) => {
     return (
         <div className='card-con'>
             <div className="options">
-                <img src={delete_icon} alt="" onClick={()=>handleDelete(props.code_id)} />
+                <Tippy content="Delete" placement="top"><img src={delete_icon} alt="" onClick={()=>handleDelete(props.code_id)} /></Tippy>
             </div>
             <div className="sub-con" onClick={()=>navigate(`/playground`, { state: props })}>
                 <div className="lang-icon">

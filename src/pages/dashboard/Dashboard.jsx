@@ -15,7 +15,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence } from 'framer-motion'
 import Axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-
+import Tippy from '@tippyjs/react'
+import 'tippy.js/dist/tippy.css'
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -96,7 +97,7 @@ const Dashboard = () => {
             <header>
                 <img src={brand} alt="Code play" onClick={() => navigate("/")} />
                 <div className="logout-box">
-                    <img src={logout_icon} alt="logout" onClick={logout} />
+                    <Tippy content="Logout" placement="left"><img src={logout_icon} alt="logout" onClick={logout} /></Tippy>
                 </div>
 
             </header>
@@ -108,7 +109,8 @@ const Dashboard = () => {
                 })}
             </section>
 
-            <img src={add_btn} alt="Add" className='round-btn' onClick={() => setVisible(true)} />
+            <Tippy content="Add new code" placement="left"><img src={add_btn} alt="Add" className='round-btn' onClick={() => setVisible(true)} /></Tippy>
+            
             <AnimatePresence>
                 {isVisible && (
                     <motion.div
