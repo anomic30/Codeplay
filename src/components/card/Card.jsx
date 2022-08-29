@@ -30,7 +30,10 @@ const Card = ({ props, setCodes }) => {
             </div>
             <div className="sub-con" onClick={()=>navigate(`/playground`, { state: props })}>
                 <div className="lang-icon">
-                    <img src={`https://img.icons8.com/ios/64/23F7ED/${iconNames[props?.language?.value]}.png`} />
+                    {props?.language?.value ? <img src={`https://img.icons8.com/ios/64/23F7ED/${iconNames[props?.language?.value]}.png`} /> : 
+                    <img src={`https://img.icons8.com/ios/64/23F7ED/placeholder-thumbnail-xml.png`} />
+                    }
+                    
                 </div>
                 <div className="file-info">
                     <p className='file-name'>{props.file_name}</p>

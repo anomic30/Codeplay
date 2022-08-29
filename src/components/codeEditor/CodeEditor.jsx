@@ -17,7 +17,7 @@ const CodeEditor = ({language, theme, code, setCode, fontSize}) => {
         <div className='codeeditor-con'>
             <Editor
                 options={options}
-                height="calc(100vh - 50px)"
+                height="calc(100vh - 64px)"
                 width={'100%'}
                 language={language || 'javascript'}
                 theme={theme}

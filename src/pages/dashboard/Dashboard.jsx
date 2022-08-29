@@ -40,12 +40,33 @@ const Dashboard = () => {
     }, [navigate, user])
 
     useEffect(() => {
-        Axios.get(`${import.meta.env.VITE_APP_SERVER}/getCodes`,
-            { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } }).then((res) => {
+        async function getCodes() {
+            try {
+                const res = await Axios.get(`${import.meta.env.VITE_APP_SERVER}/getCodes`, { headers: { Authorization: "Bearer " + window.localStorage.getItem('didToken') } });
                 setCodes(res.data.codes);
                 window.localStorage.setItem("theme", JSON.stringify(res.data.theme));
                 console.log(res.data.codes);
-            })
+            } catch (err) {
+                console.log(err);
+                if (err.response.status === 401) {
+                    toast(`Session expired! Please login again.`, {
+                        icon: '⚠️',
+                        style: {
+                            borderRadius: '5px',
+                            background: '#1a1a1e',
+                            color: '#a9acbb',
+                        },
+                    });
+                    magic.user.logout().then(() => {
+                        window.localStorage.removeItem("didToken");
+                        setUser(null);
+                        navigate('/');
+                        // window.location.reload();
+                    })
+                }
+            }
+        }
+        getCodes();
     }, [])
 
     const logout = () => {
@@ -53,6 +74,7 @@ const Dashboard = () => {
             window.localStorage.removeItem("didToken");
             setUser(null);
             toast(`Successfully logged out!`, {
+                icon: '✅',
                 style: {
                     borderRadius: '5px',
                     background: '#1a1a1e',
@@ -102,15 +124,15 @@ const Dashboard = () => {
 
             </header>
 
-            <p>Your Codes</p>
-            <section className='my-codes'>
+            
+            {codes.length > 0? <><p>Your Codes</p><section className='my-codes'>
                 {codes.map((code, idx) => {
                     return <Card key={idx} props={code} setCodes={setCodes} />
                 })}
-            </section>
+            </section></>: <p>Create a file by clicking the add button at the bottom to save your code.</p>}
 
             <Tippy content="Add new code" placement="left"><img src={add_btn} alt="Add" className='round-btn' onClick={() => setVisible(true)} /></Tippy>
-            
+
             <AnimatePresence>
                 {isVisible && (
                     <motion.div
