@@ -143,7 +143,9 @@ const Playground = () => {
             .then(function (response) {
                 console.log("res.data", response.data);
                 const token = response.data.token;
-                checkStatus(token);
+                setTimeout(() => {
+                    checkStatus(token);
+                }, 2000);
             })
             .catch((err) => {
                 let error = err.response ? err.response.data : err;
